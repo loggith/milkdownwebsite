@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "build:doc": "node scripts/build-api.mjs",
-    "build:next": "next build",
+    "build:next": "next build && next export",
+    "export:next": "next export",
     "dev": "next dev",
     "build": "pnpm build:doc && pnpm build:next",
     "start": "next start",
