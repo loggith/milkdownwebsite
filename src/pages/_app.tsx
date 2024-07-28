@@ -1,10 +1,10 @@
-import Footer from "@/components/footer";
-import { Header } from "@/components/header";
-import PwaUpdater from "@/components/pwa-updater";
+// import Footer from "@/components/footer";
+// import { Header } from "@/components/header";
+// import PwaUpdater from "@/components/pwa-updater";
 import { DocSearchProvider, LayoutProvider } from "@/providers";
 import { DocSearch } from "@/utils/types";
 
-import { Analytics } from "@vercel/analytics/react";
+// import { Analytics } from "@vercel/analytics/react";
 import NextApp, { AppContext, AppInitialProps } from "next/app";
 import type { AppProps } from "next/app";
 import Head from "next/head";
@@ -18,6 +18,11 @@ import "@/styles/prose.css";
 import "@/styles/playground.css";
 import "@/styles/toast.css";
 import "@/styles/liquid.css";
+import "@/styles/font.css";
+import "@/styles/prism-nord.css";
+import "@/styles/gfont.css";
+import "@/styles/katex/katex.css";
+
 import { useRouter } from "next/router";
 import clsx from "clsx";
 
@@ -37,13 +42,13 @@ export default function App({
       </Head>
       <DocSearchProvider docSearch={docSearch}>
         <LayoutProvider>
-          <Header />
-          <main className={clsx("flex-grow", pathname !== "/" && "mt-[72px]")}>
+          {/* <Header /> */}
+          <main className={clsx("flex-grow", pathname !== "/")}>
             <Component {...componentProps} />
           </main>
-          <Footer />
-          <PwaUpdater />
-          <Analytics />
+          {/* <Footer /> */}
+          {/* <PwaUpdater /> */}
+          {/* <Analytics /> */}
         </LayoutProvider>
       </DocSearchProvider>
     </>

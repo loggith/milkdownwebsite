@@ -10,12 +10,8 @@ const withPWA = require("next-pwa")({
 const nextConfig = {
   reactStrictMode: true,
   output: "export",
+  assetPrefix: './',
   images: { unoptimized: true },
-  // exportPathMap: async function () {
-  //   return {
-  //     "/": { page: "/" },
-  //   };
-  // },
 };
 
 // module.exports = withPWA(nextConfig);
