@@ -18,10 +18,10 @@ import "@/styles/prose.css";
 import "@/styles/playground.css";
 import "@/styles/toast.css";
 import "@/styles/liquid.css";
-import "@/styles/font.css";
 import "@/styles/prism-nord.css";
+import "@/styles/font.css";
 import "@/styles/gfont.css";
-import "@/styles/katex/katex.css";
+import "@/styles/katex.css";
 
 import { useRouter } from "next/router";
 import clsx from "clsx";
