@@ -4,6 +4,10 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
+        <meta
+          httpEquiv="Content-Security-Policy"
+          content="default-src 'self'; style-src 'self';"
+        />
       </Head>
       <body>
         <Main />

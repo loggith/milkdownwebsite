@@ -1,11 +1,7 @@
-// import Footer from "@/components/footer";
-// import { Header } from "@/components/header";
-// import PwaUpdater from "@/components/pwa-updater";
 import { DocSearchProvider, LayoutProvider } from "@/providers";
 import { DocSearch } from "@/utils/types";
 
-// import { Analytics } from "@vercel/analytics/react";
-import NextApp, { AppContext, AppInitialProps } from "next/app";
+//import NextApp, { AppContext, AppInitialProps } from "next/app";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 
@@ -28,8 +24,8 @@ import clsx from "clsx";
 
 export default function App({
   Component,
-  pageProps: { docSearch, ...componentProps },
-}: AppPropsWithInitialProps) {
+  pageProps,
+}: AppProps<{ docSearch: DocSearch }>) {
   const router = useRouter();
   const pathname = router.pathname;
   return (
@@ -40,35 +36,13 @@ export default function App({
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
         />
       </Head>
-      <DocSearchProvider docSearch={docSearch}>
+      <DocSearchProvider docSearch={pageProps.docSearch}>
         <LayoutProvider>
-          {/* <Header /> */}
           <main className={clsx("flex-grow", pathname !== "/")}>
-            <Component {...componentProps} />
+            <Component {...pageProps} />
           </main>
-          {/* <Footer /> */}
-          {/* <PwaUpdater /> */}
-          {/* <Analytics /> */}
         </LayoutProvider>
       </DocSearchProvider>
     </>
   );
 }
-App.getInitialProps = async (
-  appContext: AppContext
-): Promise<AppInitialProps<{ docSearch: DocSearch }>> => {
-  const props = await NextApp.getInitialProps(appContext);
-  return {
-    ...props,
-    pageProps: {
-      ...props.pageProps,
-      docSearch: {
-        appId: process.env.DOCSEARCH_APP_ID || "",
-        apiKey: process.env.DOCSEARCH_API_KEY || "",
-        indexName: process.env.DOCSEARCH_INDEX_NAME || "",
-      },
-    },
-  };
-};
-
-type AppPropsWithInitialProps = AppProps<{ docSearch: DocSearch }>;
