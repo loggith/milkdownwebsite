@@ -10,8 +10,8 @@ const withPWA = require("next-pwa")({
 const nextConfig = {
   reactStrictMode: true,
   output: "export",
-  basePath: "/Extensions/top.logblog.tmp", // 配置路由跳转时的前baseUrl
-  assetPrefix: "/Extensions/top.logblog.tmp/", // 配置静态资源访问路径
+  basePath: "/Extensions/top.logblog.sn-ex", // 配置路由跳转时的前baseUrl
+  assetPrefix: "/Extensions/top.logblog.sn-ex/", // 配置静态资源访问路径
   trailingSlash: true, //启用 hash 路由模式
   images: { unoptimized: true },
 };
