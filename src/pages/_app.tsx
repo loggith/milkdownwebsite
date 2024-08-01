@@ -1,8 +1,6 @@
-import { DocSearchProvider, LayoutProvider } from "@/providers";
-import { DocSearch } from "@/utils/types";
+import { LayoutProvider } from "@/providers";
 
 //import NextApp, { AppContext, AppInitialProps } from "next/app";
-import type { AppProps } from "next/app";
 import Head from "next/head";
 
 import "@docsearch/css";
@@ -22,12 +20,21 @@ import "@/styles/katex.css";
 import { useRouter } from "next/router";
 import clsx from "clsx";
 
-export default function App({
-  Component,
-  pageProps,
-}: AppProps<{ docSearch: DocSearch }>) {
+import { useEffect } from 'react';
+import dynamic from 'next/dynamic';
+
+const Playground = dynamic(() => import('@/pages/index'), {
+  ssr: false,
+});
+
+const App = () => {
   const router = useRouter();
   const pathname = router.pathname;
+
+  useEffect(() => {
+    // 在这里执行一些操作
+  }, []);
+
   return (
     <>
       <Head>
@@ -36,13 +43,13 @@ export default function App({
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
         />
       </Head>
-      <DocSearchProvider docSearch={pageProps.docSearch}>
         <LayoutProvider>
-          <main className={clsx("flex-grow", pathname !== "/")}>
-            <Component {...pageProps} />
+          <main className={clsx('flex-grow', pathname !== '/')}>
+            <Playground/>
           </main>
         </LayoutProvider>
-      </DocSearchProvider>
     </>
   );
-}
+};
+
+export default App;

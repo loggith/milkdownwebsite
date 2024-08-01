@@ -17,14 +17,6 @@ import { ControlPanel } from "../../components/playground/control-panel";
 
 import snApi from "sn-extension-api";
 
-snApi.initialize({
-  debounceSave: 400,
-});
-
-snApi.subscribe(() => {
-  console.log("snApi.text:", snApi.text);
-});
-
 const Provider = compose(
   FeatureToggleProvider,
   MilkdownProvider,
@@ -34,23 +26,12 @@ const Provider = compose(
   InspectorProvider
 );
 
-let myBool = false;
+interface PlaygroundProps {
+  data: string;
+}
 
-export const Playground: FC = () => {
-  const template = "Loading...";
-  const [content, setContent] = useState(template);
-
-  // useEffect(() => {
-  //   snApi.subscribe(() => {
-  //     setContent(snApi.text);
-  //     const { current } = milkdownRef;
-  //     current?.update(snApi.text);
-  //     const codemirror = codemirrorRef.current;
-  //     codemirror?.update(snApi.text);
-  //     myBool = true;
-  //     console.log("myBool:true snApi.text:", snApi.text);
-  //   });
-  // }, []);
+export const Playground: FC<PlaygroundProps> = ({ data }) => {
+  const [content, setContent] = useState(data);
 
   const router = useRouter();
   const path = router.asPath;
@@ -75,8 +56,6 @@ export const Playground: FC = () => {
     const codemirror = codemirrorRef.current;
     if (!codemirror) return;
     codemirror.update(markdown);
-    console.log("when Callback myBool:", myBool);
-    if (!myBool) return;
     snApi.text = markdown;
   }, []);
 
@@ -85,7 +64,6 @@ export const Playground: FC = () => {
     if (!current) return;
     const value = getCode();
     current.update(value);
-    if (!myBool) return;
     snApi.text = value;
   }, []);
 

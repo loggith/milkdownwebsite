@@ -5,8 +5,9 @@
   "scripts": {
     "build:doc": "node scripts/build-api.mjs",
     "build:next": "next build && next export",
+    "build:publish": "rm -rf dist/latest.zip && zip -r dist/latest.zip out",
     "dev": "next dev",
-    "build": "pnpm build:doc && pnpm build:next",
+    "build": "pnpm build:doc && pnpm build:next && pnpm build:publish",
     "start": "next start",
     "lint": "next lint && tsc --noEmit",
     "prepare": "husky install"
