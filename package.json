@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "build:doc": "node scripts/build-api.mjs",
-    "build:next": "next build && next export",
-    "build:publish": "rm -rf dist/latest.zip && zip -r dist/latest.zip out",
+    "build:next": "next build && next export -o dist",
+    "build:publish": "zip -r dist/latest.zip dist",
     "dev": "next dev",
     "build": "pnpm build:doc && pnpm build:next && pnpm build:publish",
     "start": "next start",

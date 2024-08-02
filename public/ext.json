@@ -1,0 +1,14 @@
+{
+  "name": "logMilkdown",
+  "content_type": "SN|Component",
+  "main": "index.html",
+  "area": "editor-editor",
+  "note_type": "markdown",
+  "file_type": "md",
+  "identifier": "top.logblog.sn-ex",
+  "version": "5.0.0",
+  "description": "A milkdown editor",
+  "url": "https://sn-ex.logblog.top/Extensions/top.logblog.sn-ex/index.html",
+  "download_url": "https://sn-ex.logblog.top/Extensions/top.logblog.sn-ex/latest.zip",
+  "latest_url": "https://sn-ex.logblog.top/Extensions/top.logblog.sn-ex/ext.json"
+}

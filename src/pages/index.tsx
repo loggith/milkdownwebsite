@@ -16,6 +16,7 @@ const Provider = dynamic(
 import { useState, useEffect } from 'react';
 
 export default function Playground() {
+  const [unLoading, setUnLoading] = useState(false);
   const [subscriptionData, setSubscriptionData] = useState('');
 
 useEffect(() => {
@@ -27,6 +28,7 @@ useEffect(() => {
     });
     const unsubscribe = snApi.subscribe(() => {
       setSubscriptionData(snApi.text);
+      setUnLoading(true);
     });
 
     return unsubscribe;
@@ -38,8 +40,8 @@ useEffect(() => {
       <Head>
         <title>Playground | Milkdown</title>
       </Head>
-      <div className="m-0 grid border-b border-gray-300 dark:border-gray-600 md:mt-0 md:grid-cols-2">
-        {subscriptionData && <Provider data={subscriptionData} />}
+      <div className="snmd-grid">
+        {unLoading && <Provider data={subscriptionData} />}
       </div>
     </>
   );

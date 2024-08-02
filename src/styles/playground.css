@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .cm-editor {
   @apply font-mono h-full xl:text-base lg:text-sm md:text-xs;
 }
@@ -8,4 +12,24 @@
 
 div[data-show="false"] {
   @apply hidden;
+}
+
+.snmdFirstDiv {
+  @apply overflow-auto overscroll-none;
+  height: calc(50vh - 2rem);
+}
+
+.snmdSecondDiv {
+  @apply overflow-auto overscroll-none border-l border-gray-300 dark:border-gray-600;
+  height: calc(50vh - 2rem);
+}
+
+@media (min-width: 768px) {
+  .snmdFirstDiv, .snmdSecondDiv {
+    height: 100vh;
+  }
+}
+
+.snmd-grid {
+  @apply m-0 grid border-b border-gray-300 dark:border-gray-600 md:mt-0 md:grid-cols-2;
 }

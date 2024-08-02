@@ -69,14 +69,14 @@ export const Playground: FC<PlaygroundProps> = ({ data }) => {
 
   return (
     <Provider>
-      <div className="h-[calc(50vh-2rem)] overflow-auto overscroll-none md:h-[calc(100vh-0px)]">
+      <div className="snmdFirstDiv">
         <PlaygroundMilkdown
           milkdownRef={milkdownRef}
           content={content}
           onChange={onMilkdownChange}
         />
       </div>
-      <div className="h-[calc(50vh-2rem)] overflow-auto overscroll-none border-l border-gray-300 dark:border-gray-600 md:h-[calc(100vh-0px)]">
+      <div className="snmdSecondDiv">
         <ControlPanel
           codemirrorRef={codemirrorRef}
           content={content}
