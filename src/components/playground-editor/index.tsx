@@ -53,27 +53,16 @@ export interface MilkdownRef {
   update: (markdown: string) => void;
 }
 
-// import snApi from "sn-extension-api";
-
-// snApi.initialize({
-//   debounceSave: 400
-// });
-
-// snApi.subscribe(()=>{});
-
 export const PlaygroundMilkdown: FC<MilkdownProps> = ({
   content,
   onChange,
   milkdownRef,
 }) => {
-  // const [value, setValue] = useState(snApi.text);
   
   const { loading, get } = usePlayground(content, onChange);
 
   useImperativeHandle(milkdownRef, () => ({
     update: (markdown: string) => {
-      // setValue(markdown);
-      // snApi.text = markdown;
       if (loading) return;
       const editor = get();
       editor?.action((ctx) => {
